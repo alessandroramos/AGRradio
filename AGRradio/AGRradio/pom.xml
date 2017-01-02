@@ -23,7 +23,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>      
     <repositories>        
-<!-- PRIMEFACES REPOSITORY -->
+        <!-- PRIMEFACES REPOSITORY -->
         <repository>
             <id>prime-repo</id>
             <name>PrimeFaces Maven Repository</name>
@@ -31,25 +31,25 @@
             <layout>default</layout>
         </repository>        
 
-<!-- FACELETS TAGLIBRARIES REPOSITORY -->
+        <!-- FACELETS TAGLIBRARIES REPOSITORY -->
         <repository>
             <id>org.springframework.security.taglibs.facelets</id>
             <url>http://nexus.emergya.es/nexus/content/groups/public/</url>
         </repository>          
 
-<!-- REPOSITÓRIO DA AOP ALLIANCE -->
+        <!-- REPOSITÓRIO DA AOP ALLIANCE -->
         <repository>
-                <id>com.springsource.repository.bundles.release</id>
-                <name>SpringSource Enterprise Bundle Repository - SpringSource Bundle Releases</name>
-                <url>http://repository.springsource.com/maven/bundles/release</url>
+            <id>com.springsource.repository.bundles.release</id>
+            <name>SpringSource Enterprise Bundle Repository - SpringSource Bundle Releases</name>
+            <url>http://repository.springsource.com/maven/bundles/release</url>
         </repository>
         <repository>
-                <id>com.springsource.repository.bundles.external</id>
-                <name>SpringSource Enterprise Bundle Repository - External Bundle Releases</name>
-                <url>http://repository.springsource.com/maven/bundles/external</url>
+            <id>com.springsource.repository.bundles.external</id>
+            <name>SpringSource Enterprise Bundle Repository - External Bundle Releases</name>
+            <url>http://repository.springsource.com/maven/bundles/external</url>
         </repository>
 
-<!-- REPOSITÓRIO DO JASPER REPORTS -->        
+        <!-- REPOSITÓRIO DO JASPER REPORTS -->        
         <repository>
             <id>jasperreports</id>
             <url>http://repo1.maven.org/maven2/</url>
@@ -60,14 +60,24 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-commons-annotations</artifactId>
+            <version>3.2.0.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.transaction</groupId>
+            <artifactId>jta</artifactId>
+            <version>1.1</version>
+        </dependency>
+        <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>6.0</version>
             <scope>provided</scope>
         </dependency>
         
-<!-- || DEPENDÊNCIAS DO JAVA SERVER FACES || -->                        
-<!-- ############## JSF-API ################ -->
+        <!-- || DEPENDÊNCIAS DO JAVA SERVER FACES || -->                        
+        <!-- ############## JSF-API ################ -->
         <dependency>
             <groupId>com.sun.faces</groupId>
             <artifactId>jsf-api</artifactId>
@@ -75,42 +85,42 @@
             <scope>compile</scope>
         </dependency>
 
-<!-- ############## JSF-IMPL ############### -->
+        <!-- ############## JSF-IMPL ############### -->
         <dependency>
             <groupId>com.sun.faces</groupId>
             <artifactId>jsf-impl</artifactId>
             <version>${jsf.version}</version>
         </dependency>
                 
-<!-- ################ JSTL ################# -->
+        <!-- ################ JSTL ################# -->
         <dependency>  
             <groupId>javax.servlet</groupId>  
             <artifactId>jstl</artifactId>  
             <version>${jstl.version}</version>  
         </dependency>  
     
-<!-- ############ SERVLET-API ############## --> 
+        <!-- ############ SERVLET-API ############## --> 
         <dependency>  
             <groupId>javax.servlet</groupId>  
             <artifactId>servlet-api</artifactId>  
             <version>3.0-alpha-1</version>  
         </dependency>
         
-<!-- ############## JSP-API ################ -->
+        <!-- ############## JSP-API ################ -->
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>jsp-api</artifactId>
             <version>2.1</version>
         </dependency>
         
-<!-- ##### DEPENDÊNCIAS DO PRIMEFACES ##### -->
+        <!-- ##### DEPENDÊNCIAS DO PRIMEFACES ##### -->
         <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
             <version>3.4.2</version>
         </dependency>
         
-<!-- ######## TEMAS DO PRIMEFACES ######### -->        
+        <!-- ######## TEMAS DO PRIMEFACES ######### -->        
         <dependency>              
             <groupId>org.primefaces.themes</groupId>  
             <artifactId>cupertino</artifactId>              
@@ -153,7 +163,7 @@
             <version>${themes.version}</version> 
         </dependency>
 
-<!-- ######## SLF4J ######### -->
+        <!-- ######## SLF4J ######### -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
@@ -166,16 +176,16 @@
             <version>${slf4j.version}</version>
         </dependency>
 
-<!-- |||||| DEPENDÊNCIAS DO HIBERNATE |||||| -->
+        <!-- |||||| DEPENDÊNCIAS DO HIBERNATE |||||| -->
 
-<!-- ########### HIBERNATE-C3P0 ############ -->
+        <!-- ########### HIBERNATE-C3P0 ############ -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-c3p0</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
             
-<!-- ############### C3P0 ################## -->
+        <!-- ############### C3P0 ################## -->
         <dependency>
             <artifactId>c3p0</artifactId>
             <groupId>c3p0</groupId>
@@ -183,14 +193,14 @@
             <version>0.9.1</version>
         </dependency>
         
-<!-- ########### HIBERNATE CORE ############ -->
+        <!-- ########### HIBERNATE CORE ############ -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>${hibernate.version}</version>            
+            <version>4.0.1.Final</version>            
         </dependency>
 
-<!-- ########### HIBERNATE ANTLR ########### -->
+        <!-- ########### HIBERNATE ANTLR ########### -->
         <dependency>
             <artifactId>antlr</artifactId>
             <groupId>antlr</groupId>
@@ -198,7 +208,7 @@
             <version>2.7.7</version>
         </dependency>
         
-<!-- ######### COMMONS-COLLECTIONS ######### -->
+        <!-- ######### COMMONS-COLLECTIONS ######### -->
         <dependency>
             <artifactId>commons-collections</artifactId>
             <groupId>commons-collections</groupId>
@@ -206,7 +216,7 @@
             <version>3.2.1</version>
         </dependency>
         
-<!-- ############### DOM4J ################# -->
+        <!-- ############### DOM4J ################# -->
         <dependency>
             <artifactId>dom4j</artifactId>
             <groupId>dom4j</groupId>
@@ -220,7 +230,7 @@
             </exclusions>
         </dependency>
         
-<!-- #### HIBERNATE-COMMONS-ANNOTATIONS #### -->
+        <!-- #### HIBERNATE-COMMONS-ANNOTATIONS #### -->
         <dependency>
             <artifactId>hibernate-commons-annotations</artifactId>
             <groupId>org.hibernate.common</groupId>
@@ -228,7 +238,7 @@
             <version>${hibernate.version}</version>
         </dependency>
         
-<!-- ############# HIBERNATE-JPA ########### -->
+        <!-- ############# HIBERNATE-JPA ########### -->
         <dependency>
             <artifactId>hibernate-jpa-2.0-api</artifactId>
             <groupId>org.hibernate.javax.persistence</groupId>
@@ -236,7 +246,7 @@
             <version>1.0.1.Final</version>
         </dependency>
         
-<!-- ############## JAVASSIST ############## -->
+        <!-- ############## JAVASSIST ############## -->
         <dependency>
             <artifactId>javassist</artifactId>
             <groupId>org.javassist</groupId>
@@ -244,7 +254,7 @@
             <version>3.15.0-GA</version>
         </dependency>
         
-<!-- ############ JBOSS-LOGGING ############ -->
+        <!-- ############ JBOSS-LOGGING ############ -->
         <dependency>
             <artifactId>jboss-logging</artifactId>
             <groupId>org.jboss.logging</groupId>
@@ -252,7 +262,7 @@
             <version>3.1.0.CR2</version>
         </dependency>
         
-<!-- ######## JBOSS-TRANSACTION-API ######## -->
+        <!-- ######## JBOSS-TRANSACTION-API ######## -->
         <dependency>
             <artifactId>jboss-transaction-api_1.1_spec</artifactId>
             <groupId>org.jboss.spec.javax.transaction</groupId>
@@ -260,21 +270,21 @@
             <version>1.0.0.Final</version>
         </dependency>      
                 
-<!-- ##### JPA-HIBERNATE-ENTITYMANAGER ##### -->                        
+        <!-- ##### JPA-HIBERNATE-ENTITYMANAGER ##### -->                        
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>${hibernate.version}</version>            
+            <version>3.6.10.Final</version>            
         </dependency>
                 
-<!-- ########## HIBERNATE-EHCACHE ########## -->
+        <!-- ########## HIBERNATE-EHCACHE ########## -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-ehcache</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
 
-<!-- ############ EHCACHE-CORE ############# -->
+        <!-- ############ EHCACHE-CORE ############# -->
         <dependency>
             <artifactId>ehcache-core</artifactId>
             <groupId>net.sf.ehcache</groupId>
@@ -282,30 +292,31 @@
             <version>2.4.3</version>
         </dependency>            
 
-<!-- || DEPENDÊNCIAS DO JAVAX-PERSISTENCE || -->
+        <!-- || DEPENDÊNCIAS DO JAVAX-PERSISTENCE || -->
         <dependency>
             <groupId>javax.persistence</groupId>
             <artifactId>persistence-api</artifactId>
             <version>1.0.2</version>
         </dependency>
         
-<!-- |||| DEPENDÊNCIAS DO MYSQL DRIVER  |||| -->        
+        <!-- https://mvnrepository.com/artifact/postgresql/postgresql -->
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql.version}</version>
-        </dependency> 
+            <groupId>postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>9.2-1002.jdbc4</version>
+        </dependency>
+
         
-<!-- |||| DEPENDÊNCIAS DO SPRING-SECURITY || -->  
+        <!-- |||| DEPENDÊNCIAS DO SPRING-SECURITY || -->  
                                                  
-<!-- ### FACELETS-TAGLIB-JSF2.0-SPRING-3 ### -->
+        <!-- ### FACELETS-TAGLIB-JSF2.0-SPRING-3 ### -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>facelets-taglib-jsf20-spring-3</artifactId>
             <version>0.5</version>
         </dependency>
                                
-<!-- ####### SPRING-SECURITY-TAGLIBS ####### -->
+        <!-- ####### SPRING-SECURITY-TAGLIBS ####### -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-taglibs</artifactId>
@@ -318,14 +329,14 @@
             </exclusions>
         </dependency>            
         
-<!-- ####### SPRING-SECURITY-CONFIG ######## -->
+        <!-- ####### SPRING-SECURITY-CONFIG ######## -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
             <version>3.0.5.RELEASE</version>
         </dependency>
 
-<!-- ######## SPRING-SECURITY-CORE ######### -->
+        <!-- ######## SPRING-SECURITY-CORE ######### -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>
@@ -342,57 +353,57 @@
             </exclusions>
         </dependency>
  
-<!-- ######### SPRING-SECURITY-WEB ######### -->
+        <!-- ######### SPRING-SECURITY-WEB ######### -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-web</artifactId>
             <version>3.0.5.RELEASE</version>
         </dependency>
 
-<!-- ||| DEPENDÊNCIAS DO SPRING FRAMEWORK |||-->          
-<!-- ############# SPRING-ASM ############## -->
+        <!-- ||| DEPENDÊNCIAS DO SPRING FRAMEWORK |||-->          
+        <!-- ############# SPRING-ASM ############## -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-asm</artifactId>
             <version>${spring.version}</version>
         </dependency>
 
-<!-- ############ SPRING-BEANS ############# -->
+        <!-- ############ SPRING-BEANS ############# -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
             <version>${spring.version}</version>
         </dependency>
         
-<!-- ########### SPRING-CONTEXT ############ -->
+        <!-- ########### SPRING-CONTEXT ############ -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>${spring.version}</version>
         </dependency>
                 
-<!-- ############# SPRING-CORE ############# -->
+        <!-- ############# SPRING-CORE ############# -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
             <version>${spring.version}</version>
         </dependency>
 
-<!-- ########## SPRING-EXPRESSION ########## -->
+        <!-- ########## SPRING-EXPRESSION ########## -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-expression</artifactId>
             <version>${spring.version}</version>
         </dependency>
 
-<!-- ############# SPRING-JDBC ############# -->
+        <!-- ############# SPRING-JDBC ############# -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
             <version>${spring.version}</version>
         </dependency>        
         
-<!-- ############## SPRING-TX ############## -->
+        <!-- ############## SPRING-TX ############## -->
         <dependency>
             <artifactId>spring-tx</artifactId>
             <groupId>org.springframework</groupId>
@@ -400,21 +411,21 @@
             <version>3.0.5.RELEASE</version>
         </dependency>
         
-<!-- ############# SPRING-WEB ############# -->
+        <!-- ############# SPRING-WEB ############# -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
             <version>${spring.version}</version>
         </dependency>    
 
-<!-- ############# SPRING-AOP ############# -->    
+        <!-- ############# SPRING-AOP ############# -->    
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aop</artifactId>
             <version>${spring.version}</version>
         </dependency>
         
-<!-- ############ AOP-ALLIANCE ############ -->
+        <!-- ############ AOP-ALLIANCE ############ -->
         <dependency>
             <artifactId>aopalliance</artifactId>
             <groupId>aopalliance</groupId>
@@ -422,18 +433,18 @@
             <version>1.0</version>
         </dependency>
 
-<!-- ############ AOP-ALLIANCE ############ -->
+        <!-- ############ AOP-ALLIANCE ############ -->
         <dependency>            
             <groupId>org.aopalliance</groupId>
             <artifactId>com.springsource.org.aopalliance</artifactId>
             <version>1.0.0</version>
         </dependency> 
         
-<!-- ||||||| DEPENDÊNCIAS DO J-UNIT |||||||| -->        
+        <!-- ||||||| DEPENDÊNCIAS DO J-UNIT |||||||| -->        
         <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>4.8.2</version>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.8.2</version>
         </dependency>        
     </dependencies>
 
