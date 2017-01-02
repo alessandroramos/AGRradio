@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01/01/2017 20:44:20 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="br.com.agr.model.entities.Gppps" table="gppps" schema="public">
+        <id name="pk" type="long">
+            <column name="pk" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="patient" class="br.com.agr.model.entities.Patient" fetch="select">
+            <column name="patient_fk" />
+        </many-to-one>
+        <property name="ppsIuid" type="string">
+            <column name="pps_iuid" not-null="true" unique="true" />
+        </property>
+        <property name="ppsStart" type="timestamp">
+            <column name="pps_start" length="29" />
+        </property>
+        <property name="ppsStatus" type="int">
+            <column name="pps_status" not-null="true" />
+        </property>
+        <property name="createdTime" type="timestamp">
+            <column name="created_time" length="29" />
+        </property>
+        <property name="updatedTime" type="timestamp">
+            <column name="updated_time" length="29" />
+        </property>
+        <property name="ppsAttrs" type="binary">
+            <column name="pps_attrs" />
+        </property>
+        <set name="relGpspsGpppses" table="rel_gpsps_gppps" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="gppps_fk" />
+            </key>
+            <one-to-many class="br.com.agr.model.entities.RelGpspsGppps" />
+        </set>
+    </class>
+</hibernate-mapping>

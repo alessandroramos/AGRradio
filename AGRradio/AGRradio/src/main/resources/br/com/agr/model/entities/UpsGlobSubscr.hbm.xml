@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01/01/2017 20:44:20 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="br.com.agr.model.entities.UpsGlobSubscr" table="ups_glob_subscr" schema="public">
+        <id name="pk" type="long">
+            <column name="pk" />
+            <generator class="assigned" />
+        </id>
+        <property name="aet" type="string">
+            <column name="aet" not-null="true" unique="true" />
+        </property>
+        <property name="deletionLock" type="boolean">
+            <column name="deletion_lock" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

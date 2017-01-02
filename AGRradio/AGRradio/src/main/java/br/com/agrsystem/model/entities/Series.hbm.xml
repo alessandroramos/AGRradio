@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01/01/2017 20:44:20 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="br.com.agr.model.entities.Series" table="series" schema="public">
+        <id name="pk" type="long">
+            <column name="pk" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="study" class="br.com.agr.model.entities.Study" fetch="select">
+            <column name="study_fk" />
+        </many-to-one>
+        <many-to-one name="code" class="br.com.agr.model.entities.Code" fetch="select">
+            <column name="inst_code_fk" />
+        </many-to-one>
+        <many-to-one name="mpps" class="br.com.agr.model.entities.Mpps" fetch="select">
+            <column name="mpps_fk" />
+        </many-to-one>
+        <property name="seriesIuid" type="string">
+            <column name="series_iuid" not-null="true" unique="true" />
+        </property>
+        <property name="seriesNo" type="string">
+            <column name="series_no" />
+        </property>
+        <property name="modality" type="string">
+            <column name="modality" />
+        </property>
+        <property name="bodyPart" type="string">
+            <column name="body_part" />
+        </property>
+        <property name="laterality" type="string">
+            <column name="laterality" />
+        </property>
+        <property name="seriesDesc" type="string">
+            <column name="series_desc" />
+        </property>
+        <property name="institution" type="string">
+            <column name="institution" />
+        </property>
+        <property name="stationName" type="string">
+            <column name="station_name" />
+        </property>
+        <property name="department" type="string">
+            <column name="department" />
+        </property>
+        <property name="perfPhysician" type="string">
+            <column name="perf_physician" />
+        </property>
+        <property name="perfPhysFnSx" type="string">
+            <column name="perf_phys_fn_sx" />
+        </property>
+        <property name="perfPhysGnSx" type="string">
+            <column name="perf_phys_gn_sx" />
+        </property>
+        <property name="perfPhysIName" type="string">
+            <column name="perf_phys_i_name" />
+        </property>
+        <property name="perfPhysPName" type="string">
+            <column name="perf_phys_p_name" />
+        </property>
+        <property name="ppsStart" type="timestamp">
+            <column name="pps_start" length="29" />
+        </property>
+        <property name="ppsIuid" type="string">
+            <column name="pps_iuid" />
+        </property>
+        <property name="seriesCustom1" type="string">
+            <column name="series_custom1" />
+        </property>
+        <property name="seriesCustom2" type="string">
+            <column name="series_custom2" />
+        </property>
+        <property name="seriesCustom3" type="string">
+            <column name="series_custom3" />
+        </property>
+        <property name="numInstances" type="int">
+            <column name="num_instances" not-null="true" />
+        </property>
+        <property name="srcAet" type="string">
+            <column name="src_aet" />
+        </property>
+        <property name="extRetrAet" type="string">
+            <column name="ext_retr_aet" />
+        </property>
+        <property name="retrieveAets" type="string">
+            <column name="retrieve_aets" />
+        </property>
+        <property name="filesetIuid" type="string">
+            <column name="fileset_iuid" />
+        </property>
+        <property name="filesetId" type="string">
+            <column name="fileset_id" />
+        </property>
+        <property name="availability" type="int">
+            <column name="availability" not-null="true" />
+        </property>
+        <property name="seriesStatus" type="int">
+            <column name="series_status" not-null="true" />
+        </property>
+        <property name="createdTime" type="timestamp">
+            <column name="created_time" length="29" />
+        </property>
+        <property name="updatedTime" type="timestamp">
+            <column name="updated_time" length="29" />
+        </property>
+        <property name="seriesAttrs" type="binary">
+            <column name="series_attrs" />
+        </property>
+        <set name="instances" table="instance" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="series_fk" />
+            </key>
+            <one-to-many class="br.com.agr.model.entities.Instance" />
+        </set>
+        <set name="seriesReqs" table="series_req" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="series_fk" />
+            </key>
+            <one-to-many class="br.com.agr.model.entities.SeriesReq" />
+        </set>
+    </class>
+</hibernate-mapping>

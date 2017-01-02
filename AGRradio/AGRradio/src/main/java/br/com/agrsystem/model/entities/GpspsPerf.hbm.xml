@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01/01/2017 20:44:20 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="br.com.agr.model.entities.GpspsPerf" table="gpsps_perf" schema="public">
+        <id name="pk" type="long">
+            <column name="pk" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="code" class="br.com.agr.model.entities.Code" fetch="select">
+            <column name="code_fk" />
+        </many-to-one>
+        <many-to-one name="gpsps" class="br.com.agr.model.entities.Gpsps" fetch="select">
+            <column name="gpsps_fk" />
+        </many-to-one>
+        <property name="humanPerfName" type="string">
+            <column name="human_perf_name" />
+        </property>
+        <property name="humPerfFnSx" type="string">
+            <column name="hum_perf_fn_sx" />
+        </property>
+        <property name="humPerfGnSx" type="string">
+            <column name="hum_perf_gn_sx" />
+        </property>
+        <property name="humPerfIName" type="string">
+            <column name="hum_perf_i_name" />
+        </property>
+        <property name="humPerfPName" type="string">
+            <column name="hum_perf_p_name" />
+        </property>
+    </class>
+</hibernate-mapping>

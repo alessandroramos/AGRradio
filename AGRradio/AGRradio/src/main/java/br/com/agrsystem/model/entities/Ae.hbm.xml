@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01/01/2017 20:44:20 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="br.com.agr.model.entities.Ae" table="ae" schema="public">
+        <id name="pk" type="long">
+            <column name="pk" />
+            <generator class="assigned" />
+        </id>
+        <property name="aet" type="string">
+            <column name="aet" not-null="true" unique="true" />
+        </property>
+        <property name="hostname" type="string">
+            <column name="hostname" not-null="true" />
+        </property>
+        <property name="port" type="int">
+            <column name="port" not-null="true" />
+        </property>
+        <property name="cipherSuites" type="string">
+            <column name="cipher_suites" />
+        </property>
+        <property name="patIdIssuer" type="string">
+            <column name="pat_id_issuer" />
+        </property>
+        <property name="accNoIssuer" type="string">
+            <column name="acc_no_issuer" />
+        </property>
+        <property name="userId" type="string">
+            <column name="user_id" />
+        </property>
+        <property name="passwd" type="string">
+            <column name="passwd" />
+        </property>
+        <property name="fsGroupId" type="string">
+            <column name="fs_group_id" />
+        </property>
+        <property name="aeGroup" type="string">
+            <column name="ae_group" />
+        </property>
+        <property name="aeDesc" type="string">
+            <column name="ae_desc" />
+        </property>
+        <property name="wadoUrl" type="string">
+            <column name="wado_url" />
+        </property>
+        <property name="stationName" type="string">
+            <column name="station_name" />
+        </property>
+        <property name="institution" type="string">
+            <column name="institution" />
+        </property>
+        <property name="department" type="string">
+            <column name="department" />
+        </property>
+        <property name="installed" type="boolean">
+            <column name="installed" not-null="true" />
+        </property>
+        <property name="vendorData" type="binary">
+            <column name="vendor_data" />
+        </property>
+    </class>
+</hibernate-mapping>

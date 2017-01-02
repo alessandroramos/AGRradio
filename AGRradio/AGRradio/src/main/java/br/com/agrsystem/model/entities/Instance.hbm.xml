@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01/01/2017 20:44:20 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="br.com.agr.model.entities.Instance" table="instance" schema="public">
+        <id name="pk" type="long">
+            <column name="pk" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="media" class="br.com.agr.model.entities.Media" fetch="select">
+            <column name="media_fk" />
+        </many-to-one>
+        <many-to-one name="code" class="br.com.agr.model.entities.Code" fetch="select">
+            <column name="srcode_fk" />
+        </many-to-one>
+        <many-to-one name="series" class="br.com.agr.model.entities.Series" fetch="select">
+            <column name="series_fk" />
+        </many-to-one>
+        <property name="sopIuid" type="string">
+            <column name="sop_iuid" not-null="true" unique="true" />
+        </property>
+        <property name="sopCuid" type="string">
+            <column name="sop_cuid" not-null="true" />
+        </property>
+        <property name="instNo" type="string">
+            <column name="inst_no" />
+        </property>
+        <property name="contentDatetime" type="timestamp">
+            <column name="content_datetime" length="29" />
+        </property>
+        <property name="srComplete" type="string">
+            <column name="sr_complete" />
+        </property>
+        <property name="srVerified" type="string">
+            <column name="sr_verified" />
+        </property>
+        <property name="instCustom1" type="string">
+            <column name="inst_custom1" />
+        </property>
+        <property name="instCustom2" type="string">
+            <column name="inst_custom2" />
+        </property>
+        <property name="instCustom3" type="string">
+            <column name="inst_custom3" />
+        </property>
+        <property name="extRetrAet" type="string">
+            <column name="ext_retr_aet" />
+        </property>
+        <property name="retrieveAets" type="string">
+            <column name="retrieve_aets" />
+        </property>
+        <property name="availability" type="int">
+            <column name="availability" not-null="true" />
+        </property>
+        <property name="instStatus" type="int">
+            <column name="inst_status" not-null="true" />
+        </property>
+        <property name="allAttrs" type="boolean">
+            <column name="all_attrs" not-null="true" />
+        </property>
+        <property name="commitment" type="boolean">
+            <column name="commitment" not-null="true" />
+        </property>
+        <property name="archived" type="boolean">
+            <column name="archived" not-null="true" />
+        </property>
+        <property name="createdTime" type="timestamp">
+            <column name="created_time" length="29" />
+        </property>
+        <property name="updatedTime" type="timestamp">
+            <column name="updated_time" length="29" />
+        </property>
+        <property name="instAttrs" type="binary">
+            <column name="inst_attrs" />
+        </property>
+        <set name="contentItems" table="content_item" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="instance_fk" />
+            </key>
+            <one-to-many class="br.com.agr.model.entities.ContentItem" />
+        </set>
+        <set name="fileses" table="files" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="instance_fk" />
+            </key>
+            <one-to-many class="br.com.agr.model.entities.Files" />
+        </set>
+        <set name="verifyObservers" table="verify_observer" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="instance_fk" />
+            </key>
+            <one-to-many class="br.com.agr.model.entities.VerifyObserver" />
+        </set>
+    </class>
+</hibernate-mapping>

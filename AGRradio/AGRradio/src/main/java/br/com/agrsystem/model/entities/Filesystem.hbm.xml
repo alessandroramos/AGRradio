@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01/01/2017 20:44:20 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="br.com.agr.model.entities.Filesystem" table="filesystem" schema="public">
+        <id name="pk" type="long">
+            <column name="pk" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="filesystem" class="br.com.agr.model.entities.Filesystem" fetch="select">
+            <column name="next_fk" />
+        </many-to-one>
+        <property name="dirpath" type="string">
+            <column name="dirpath" not-null="true" unique="true" />
+        </property>
+        <property name="fsGroupId" type="string">
+            <column name="fs_group_id" not-null="true" />
+        </property>
+        <property name="retrieveAet" type="string">
+            <column name="retrieve_aet" not-null="true" />
+        </property>
+        <property name="availability" type="int">
+            <column name="availability" not-null="true" />
+        </property>
+        <property name="fsStatus" type="int">
+            <column name="fs_status" not-null="true" />
+        </property>
+        <property name="userInfo" type="string">
+            <column name="user_info" />
+        </property>
+        <set name="fileses" table="files" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="filesystem_fk" />
+            </key>
+            <one-to-many class="br.com.agr.model.entities.Files" />
+        </set>
+        <set name="privFiles" table="priv_file" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="filesystem_fk" />
+            </key>
+            <one-to-many class="br.com.agr.model.entities.PrivFile" />
+        </set>
+        <set name="studyOnFses" table="study_on_fs" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="filesystem_fk" />
+            </key>
+            <one-to-many class="br.com.agr.model.entities.StudyOnFs" />
+        </set>
+        <set name="filesystems" table="filesystem" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="next_fk" />
+            </key>
+            <one-to-many class="br.com.agr.model.entities.Filesystem" />
+        </set>
+    </class>
+</hibernate-mapping>

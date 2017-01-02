@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01/01/2017 20:44:20 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="br.com.agr.model.entities.PrivPatient" table="priv_patient" schema="public">
+        <id name="pk" type="long">
+            <column name="pk" />
+            <generator class="assigned" />
+        </id>
+        <property name="privType" type="int">
+            <column name="priv_type" not-null="true" />
+        </property>
+        <property name="patId" type="string">
+            <column name="pat_id" />
+        </property>
+        <property name="patIdIssuer" type="string">
+            <column name="pat_id_issuer" />
+        </property>
+        <property name="patName" type="string">
+            <column name="pat_name" />
+        </property>
+        <property name="patAttrs" type="binary">
+            <column name="pat_attrs" />
+        </property>
+        <set name="privStudies" table="priv_study" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="patient_fk" />
+            </key>
+            <one-to-many class="br.com.agr.model.entities.PrivStudy" />
+        </set>
+    </class>
+</hibernate-mapping>

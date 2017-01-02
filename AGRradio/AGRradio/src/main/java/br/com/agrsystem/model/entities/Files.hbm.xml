@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01/01/2017 20:44:20 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="br.com.agr.model.entities.Files" table="files" schema="public">
+        <id name="pk" type="long">
+            <column name="pk" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="instance" class="br.com.agr.model.entities.Instance" fetch="select">
+            <column name="instance_fk" />
+        </many-to-one>
+        <many-to-one name="filesystem" class="br.com.agr.model.entities.Filesystem" fetch="select">
+            <column name="filesystem_fk" />
+        </many-to-one>
+        <property name="filepath" type="string">
+            <column name="filepath" not-null="true" />
+        </property>
+        <property name="fileTsuid" type="string">
+            <column name="file_tsuid" not-null="true" />
+        </property>
+        <property name="fileMd5" type="string">
+            <column name="file_md5" />
+        </property>
+        <property name="fileSize" type="java.lang.Long">
+            <column name="file_size" />
+        </property>
+        <property name="fileStatus" type="java.lang.Integer">
+            <column name="file_status" />
+        </property>
+        <property name="md5CheckTime" type="timestamp">
+            <column name="md5_check_time" length="29" />
+        </property>
+        <property name="createdTime" type="timestamp">
+            <column name="created_time" length="29" />
+        </property>
+    </class>
+</hibernate-mapping>

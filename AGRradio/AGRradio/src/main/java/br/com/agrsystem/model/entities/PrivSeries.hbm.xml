@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01/01/2017 20:44:20 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="br.com.agr.model.entities.PrivSeries" table="priv_series" schema="public">
+        <id name="pk" type="long">
+            <column name="pk" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="privStudy" class="br.com.agr.model.entities.PrivStudy" fetch="select">
+            <column name="study_fk" />
+        </many-to-one>
+        <property name="privType" type="int">
+            <column name="priv_type" not-null="true" />
+        </property>
+        <property name="seriesIuid" type="string">
+            <column name="series_iuid" not-null="true" />
+        </property>
+        <property name="srcAet" type="string">
+            <column name="src_aet" />
+        </property>
+        <property name="seriesAttrs" type="binary">
+            <column name="series_attrs" />
+        </property>
+        <set name="privInstances" table="priv_instance" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="series_fk" />
+            </key>
+            <one-to-many class="br.com.agr.model.entities.PrivInstance" />
+        </set>
+    </class>
+</hibernate-mapping>

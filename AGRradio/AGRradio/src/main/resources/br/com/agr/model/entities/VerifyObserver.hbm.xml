@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01/01/2017 20:44:20 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="br.com.agr.model.entities.VerifyObserver" table="verify_observer" schema="public">
+        <id name="pk" type="long">
+            <column name="pk" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="instance" class="br.com.agr.model.entities.Instance" fetch="select">
+            <column name="instance_fk" />
+        </many-to-one>
+        <property name="verifyDatetime" type="timestamp">
+            <column name="verify_datetime" length="29" />
+        </property>
+        <property name="observerName" type="string">
+            <column name="observer_name" />
+        </property>
+        <property name="observerFnSx" type="string">
+            <column name="observer_fn_sx" />
+        </property>
+        <property name="observerGnSx" type="string">
+            <column name="observer_gn_sx" />
+        </property>
+        <property name="observerIName" type="string">
+            <column name="observer_i_name" />
+        </property>
+        <property name="observerPName" type="string">
+            <column name="observer_p_name" />
+        </property>
+    </class>
+</hibernate-mapping>

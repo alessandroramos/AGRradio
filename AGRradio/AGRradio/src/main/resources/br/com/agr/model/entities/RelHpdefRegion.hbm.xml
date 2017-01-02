@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 01/01/2017 20:44:20 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="br.com.agr.model.entities.RelHpdefRegion" table="rel_hpdef_region" schema="public">
+        <composite-id name="id" class="br.com.agr.model.entities.RelHpdefRegionId">
+            <key-property name="hpdefFk" type="java.lang.Long">
+                <column name="hpdef_fk" />
+            </key-property>
+            <key-property name="regionFk" type="java.lang.Long">
+                <column name="region_fk" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="hpdef" class="br.com.agr.model.entities.Hpdef" update="false" insert="false" fetch="select">
+            <column name="hpdef_fk" />
+        </many-to-one>
+        <many-to-one name="code" class="br.com.agr.model.entities.Code" update="false" insert="false" fetch="select">
+            <column name="region_fk" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>
