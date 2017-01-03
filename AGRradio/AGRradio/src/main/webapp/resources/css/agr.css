@@ -31,12 +31,12 @@ body {
 
 #logotipo{
 /*   float:left;*/
-   width:270px;
+   width:4%;
    height:80px;
-   position: static;
+   position: relative;
    margin: auto;
    margin-top: 5px;
-   background: url(../images/logo.png) no-repeat;
+   background: url(../images/logo_mini_1.png) no-repeat;
 
 }
 
