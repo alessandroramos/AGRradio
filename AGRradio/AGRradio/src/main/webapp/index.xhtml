@@ -13,7 +13,7 @@
             <p:dialog header="AGR Saúde"
                       id="dialog"  
                       modal="true"
-                      minWidth="500"
+                      minWidth="250"
                       width="530"
                       closable="false"
                       position="center"
@@ -26,23 +26,23 @@
                     <h:panelGrid columns="2" cellpadding="2">
                         <p:commandButton style="height: 100px; width: 240px; margin-bottom: 20px; margin-right:15px"
                                          value="Clinicas" 
-                                         action="#{direcionaBean.clinica}"
+                                         action="/public/loginClinica.html"
                                          >
                         </p:commandButton>                                                
                         <p:commandButton style="height: 100px; width: 240px; margin-bottom: 20px"
                                          value="Medicos" 
-                                         action="#{direcionaBean.medicos}"
+                                         action="/public/loginMedico.html}"
                                          >
                         </p:commandButton>
                         
                         <p:commandButton style="height: 100px; width: 240px; margin-bottom: 20px; margin-right:15px"
                                          value="PACS"
-                                         action="#{direcionaBean.pacs}"
+                                         action= "http://agrsystem.com.br"
                                          >
                         </p:commandButton>                                                
                         <p:commandButton style="height: 100px; width: 240px; margin-bottom: 20px"
                                          value="Suporte"                                        
-                                         action="#{direcionaBean.suporte}"
+                                         action="#{direcionaBean.Suporte}"
                                          >
                         </p:commandButton>                                                
                     </h:panelGrid>
