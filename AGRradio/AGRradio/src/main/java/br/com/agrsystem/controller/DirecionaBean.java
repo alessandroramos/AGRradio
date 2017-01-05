@@ -16,11 +16,18 @@ import javax.faces.bean.SessionScoped;
  *
  * @author AGR System
  */
-@ManagedBean
+@ManagedBean(name = "direcionabean")
 @SessionScoped
-public class DirecionaBean implements Serializable {
+public class DirecionaBean implements Serializable 
+{
+    private static final long sserialVersionUID = 1L;
+    
+    public DirecionaBean(){
+        
+    }
 
     public String Suporte() {
+        System.out.println("Suporte");
 //        URI link;
 //        try {
 //            link = new URI("http://agrsystem.com.br");
@@ -34,6 +41,7 @@ public class DirecionaBean implements Serializable {
     }
 
     public String Pacs() {
+        System.out.println("Pacs");        
 //        URI link;
 //        try {
 //            link = new URI("http://agrsystem.com.br");
@@ -43,13 +51,15 @@ public class DirecionaBean implements Serializable {
 //        } catch (IOException ex) {
 //            Logger.getLogger(DirecionaBean.class.getName()).log(Level.SEVERE, null, ex);
 //        }
-        return "/index.html";
+        return "/public/loginClinica.html";
     }
     public String Clinica() {
-        return "/index.html";
+        System.out.println("Clinica");
+        return "/public/loginMedico.html";
     }
 
     public String Medicos() {
+        System.out.println("Medico");
         return "/index.html";
     }
 

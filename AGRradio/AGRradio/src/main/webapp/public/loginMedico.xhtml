@@ -12,7 +12,7 @@
         <div id="conteudo" style="margin-bottom:16%">            
             <p:dialog header="Área Restrita para Medicos Convêniados"
                       id="dialog"  
-                      modal="true"
+                      modal="false"
                       minWidth="500"
                       width="500"
                       closable="false"
@@ -22,7 +22,7 @@
                       draggable="false"
                       resizable="false"
                       visible="true">
-                <h:form prependId="false" id="formLogin">
+                <h:form prependId="false" id="formLoginMedico">
                     <h:outputLabel id="j_username" value="#{mLogin.confereSenha}" style="float: left; margin-left: 0px; color: red" /> 
                     <br/>
                     <h:panelGrid columns="2" cellpadding="2">
@@ -33,7 +33,7 @@
                         <p:commandButton value="Acessar" 
                                          action="#{mLogin.medicos}"
                                          image="ui-icon ui-icon-person" 
-                                         update="formLogin" 
+                                         update="formLoginMedico" 
                                          >
                         </p:commandButton>                                                
                         <p:ajaxStatus style="display:block;">

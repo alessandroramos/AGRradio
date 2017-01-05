@@ -141,7 +141,7 @@
         
         <dependency>  
             <groupId>org.primefaces.themes</groupId>  
-            <artifactId>pepper-grinder</artifactId>  
+            <artifactId>afterdark</artifactId>  
             <version>${themes.version}</version> 
         </dependency> 
         
