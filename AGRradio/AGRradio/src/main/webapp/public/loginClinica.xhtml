@@ -23,7 +23,7 @@
                       resizable="false"
                       visible="true">
                 <h:form prependId="false" id="formLoginClinica">
-                    <h:outputLabel id="j_username" value="#{mLogin.confereSenha}" style="float: left; margin-left: 0px; color: red" /> 
+                    <h:outputLabel id="j_username" value="#{loginBean.erro}" style="float: left; margin-left: 0px; color: red" /> 
                     <br/>
                     <h:panelGrid columns="2" cellpadding="2">
                         <p:outputLabel for="codigoClinica" value="Informe o Usuario de Acesso:" style="float: right; margin-left: 0px"  /> 
@@ -31,26 +31,24 @@
                         <p:outputLabel for="SenhaClinica" value="Informe Senha de Acesso:" style="float: right; margin-left: 0px"  />
                         <p:password id="SenhaClinica" size="20" required="true" />
                         <p:commandButton value="Acessar" 
-                                         action="#{mLogin.clinicas}"
+                                         action="#{loginBean.confereSenhaClinica()}"
                                          image="ui-icon ui-icon-person" 
-                                         update="formLoginClinica" 
                                          >
-                        <p:ajaxStatus style="display:block;">
-                            <f:facet name="default">
-                                <h:outputText />
-                            </f:facet>
-                            <f:facet name="start">
-                                <p:graphicImage value="/br/com/agr/resources/images/ajaxloading.gif"/>
-                            </f:facet>                    
-                            <f:facet name="complete">
-                                <h:outputText />
-                            </f:facet>
-                        </p:ajaxStatus>
-                        <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
-                        <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
-                            <p:graphicImage value="/br/com/agr/resources/images/ajaxloading.gif" />
-                        </p:dialog>
-                        
+                            <p:ajaxStatus style="display:block;">
+                                <f:facet name="default">
+                                    <h:outputText />
+                                </f:facet>
+                                <f:facet name="start">
+                                    <p:graphicImage value="/resources/images/ajaxloading.gif"/>
+                                </f:facet>                    
+                                <f:facet name="complete">
+                                    <h:outputText />
+                                </f:facet>
+                            </p:ajaxStatus>
+                            <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+                            <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+                                <p:graphicImage value="resources/images/ajaxloading.gif" />
+                            </p:dialog>                        
                         </p:commandButton>                                                
                     </h:panelGrid>
                 </h:form>

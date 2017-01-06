@@ -24,31 +24,28 @@
                       visible="true">
                 <h:form prependId="false" id="formHome">
                     <h:panelGrid columns="2" cellpadding="2">
-                        <p:commandButton style="height: 100px; width: 240px; margin-bottom: 20px; margin-right:15px"
-                                         value="Clinicas" 
-                                         action="/public/loginClinica.html"
-                                         update="formHome"
+                        <p:button outcome="/public/loginClinica.html"
+                                  style="height: 100px; width: 240px; margin-bottom: 20px; margin-right:15px"
+                                  value="Clinicas"                                                                                
                                          >
-                        </p:commandButton>                                                
-                        <p:commandButton style="height: 100px; width: 240px; margin-bottom: 20px"
+                        </p:button>                                                
+                        <p:button style="height: 100px; width: 240px; margin-bottom: 20px"
                                          value="Medicos" 
-                                         action="/public/loginMedico.html}"
-                                         update="formHome"
+                                         outcome="/public/loginMedico.html"
                                          >
-                        </p:commandButton>
+                        </p:button>
                         
-                        <p:commandButton style="height: 100px; width: 240px; margin-bottom: 20px; margin-right:15px"
+                        <p:button style="height: 100px; width: 240px; margin-bottom: 20px; margin-right:15px"
                                          value="PACS"
-                                         action= "http://agrsystem.com.br"
-                                         update="formHome"
+                                         href="http://agrsystem.com.br"
                                          >
-                        </p:commandButton>                                                
-                        <p:commandButton style="height: 100px; width: 240px; margin-bottom: 20px"
+                        </p:button>  
+
+                        <p:button style="height: 100px; width: 240px; margin-bottom: 20px"
                                          value="Suporte"                                        
-                                         action="#{direcionaBean.Suporte}"
-                                         update="formHome"
+                                         href="http://agrsystem.com.br" 
                                          >
-                        </p:commandButton>                                                
+                        </p:button>                                                
                     </h:panelGrid>
                 </h:form>
             </p:dialog>

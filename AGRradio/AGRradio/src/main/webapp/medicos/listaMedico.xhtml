@@ -9,13 +9,13 @@
                 template="../resources/main.xhtml">
 
     <ui:define name="tarefas">
-        <div id="conteudo" style="margin-bottom:16%">            
-            <p:dialog header="Lista de Paciente"
+        <div id="conteudo" style="margin-bottom:16%; " >            
+            <p:dialog header="Lista de Paciente Medico"
                       id="LCdialog"  
                       modal="true"
-                      minWidth="900"
+                      minWidth="1000"
                       width="1000"
-                      height="600"
+                      height="480"
                       closable="false"
                       position="center"
                       widgetVar="modalLogin"
@@ -23,7 +23,7 @@
                       draggable="false"
                       resizable="false"
                       visible="true">
-                <h:form prependId="false" id="formLC">
+                <h:form prependId="false" id="formLM">
                     <p:themeSwitcher id="basic" style="width:940px" >
                         <f:selectItem itemLabel="Enviados sem pedido de Laudos" itemValue="" noSelectionOption="true"/>
                         <f:selectItems value="[afterdark, afternoon, afterwork]"/>
