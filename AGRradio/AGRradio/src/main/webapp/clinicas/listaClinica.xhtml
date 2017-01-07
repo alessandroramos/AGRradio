@@ -9,26 +9,18 @@
                 template="../resources/main.xhtml">
 
     <ui:define name="tarefas">
-        <div id="conteudo" style="margin-bottom:16%">            
-            <p:dialog header="Lista de Paciente Clinica"
-                      id="LCdialog"  
-                      modal="true"
-                      minWidth="1000"
-                      width="1000"
-                      height="480"
-                      closable="false"
-                      position="center"
-                      widgetVar="modalLogin"
-                      showEffect="slide" 
-                      draggable="false"
-                      resizable="false"
-                      visible="true">
-                <h:form prependId="false" id="formLC">
-                    <p:themeSwitcher id="basic" style="width:940px" >
-                        <f:selectItem itemLabel="Enviados sem pedido de Laudos" itemValue="" noSelectionOption="true"/>
-                        <f:selectItems value="[afterdark, afternoon, afterwork]"/>
-                    </p:themeSwitcher> 
-                    <p:outputLabel/>
+        <div id="conteudo" style="margin-bottom:16%"> 
+            <h:form>
+                <p:growl id="msgs" showDetail="true" /> 
+                <p:panel header="Lista de Paciente Clinica" 
+                         style="margin-bottom:10px; width: 1000px; height:480px; position:absolute; left:50%; margin-left:-500px ">
+                    <h:panelGrid columns="1" cellpadding="5">
+                        <p:selectOneMenu id="country" value="#{listaClinicaBean.listaStatusLaudo}" style="width:970px">
+                            <p:ajax listener="#{listaClinicaBean.onListaStatusLaudoChange()}" />
+                            <f:selectItem itemLabel="Enviados sem pedido de Laudos" itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{listaClinicaBean.listaStatusLaudos}" />
+                        </p:selectOneMenu>
+                    </h:panelGrid>
                     <p:dataTable var="car" value="#{dtPaginatorView.cars}" rows="10"
                                          paginator="true"
                                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -48,9 +40,9 @@
                         <p:column headerText="Laudo" width="60">
                             <h:outputText value="#{car.color}"  />
                         </p:column>
-                    </p:dataTable>
-                </h:form>
-            </p:dialog>
+                    </p:dataTable>                    
+                </p:panel>
+            </h:form>         
         </div>        
     </ui:define>
 </ui:composition>
