@@ -8,6 +8,7 @@ package br.com.agrsystem.controller;
 
 import br.com.agrsystem.model.dao.HibernateDAO;
 import br.com.agrsystem.model.dao.InterfaceDAO;
+import br.com.agrsystem.model.entities.Patient;
 import br.com.agrsystem.model.entities.StatusLaudo;
 import br.com.agrsystem.util.FacesContextUtil;
 import java.util.HashMap;
@@ -27,26 +28,49 @@ public class ListaClinicaBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private String erro = null;
-    
-    private String listaStatusLaudo; 
-    private Map<String,String> listaStatusLaudos;
-  
+    private int statusCodigo;
+
+//###################################Entidades##################################
     private StatusLaudo statusLaudo = new StatusLaudo();
     private List<StatusLaudo> statusLaudos;
+    private Patient patient = new Patient();
+    private List<Patient> patients;
     
-    
+//##############################################################################    
     public ListaClinicaBean() {    }
+//##############################################################################
     
+//##################################Interface###################################    
     private InterfaceDAO<StatusLaudo> statusLaudoDAO() {
         InterfaceDAO<StatusLaudo> statusLaudoDAO = new HibernateDAO<StatusLaudo>(StatusLaudo.class, FacesContextUtil.getRequestSession());
         return statusLaudoDAO;
+    }
+    private InterfaceDAO<Patient> patientDAO(){
+        InterfaceDAO<Patient> patientDAO = new HibernateDAO<Patient>(Patient.class, FacesContextUtil.getRequestSession());
+        return patientDAO;
     }
     
     
     
     
+//##############################################################################
     
+//#############################Controle#########################################
+    public void onListaStatusLaudoChange() {
+        int cod = statusCodigo;
+        System.out.print("Seleciona Lista. AGR   \n " + cod);
+        patients = patientDAO().getEntities();
+        System.out.println( "\nlista de paciente  " +  patients.get(1).getPatName());
+    }
 
+//##############################################################################
+
+    public void displayLocation() {
+        FacesMessage msg;        
+            msg = new FacesMessage("Selected of " + statusLaudo);             
+        FacesContext.getCurrentInstance().addMessage(null, msg);  
+    }    
+//####################################GET SET #############################//
     public String getErro() {
         return erro;
     }
@@ -55,50 +79,17 @@ public class ListaClinicaBean implements Serializable {
     public void setErro(String erro) {
         this.erro = erro;
     }
+
+    public int getStatusCodigo() {
+        return statusCodigo;
+    }
+
+    public void setStatusCodigo(int statusCodigo) {
+        this.statusCodigo = statusCodigo;
+    }
+
+//################################GET SET Entidades#############################//
     
-    
-@PostConstruct
-    public void init() {
-        setListaStatusLaudos(new HashMap<String, String>());
-        getListaStatusLaudos().put("USAggttt", "USA");
-        getListaStatusLaudos().put("Germany", "Germany");
-        getListaStatusLaudos().put("Brazil ggg", "Brazil");
-         
-    }  
-
-    public void displayLocation() {
-        FacesMessage msg;
-        
-            msg = new FacesMessage("Selected of " + listaStatusLaudo);
-       
-             
-        FacesContext.getCurrentInstance().addMessage(null, msg);  
-    }
-    
-    public void onListaStatusLaudoChange() {
-        System.out.print("Seleciona Lista. AGR");
-    }
-
-//################################GET SET #############################//
-    public String getListaStatusLaudo() {
-        return listaStatusLaudo;
-    }
-
-    public void setListaStatusLaudo(String listaStatusLaudo) {
-        this.listaStatusLaudo = listaStatusLaudo;
-    }
-
-    public Map<String, String> getListaStatusLaudos() {
-        return listaStatusLaudos;
-    }
-
-    public void setListaStatusLaudos(Map<String, String> listaStatusLaudos) {
-        this.listaStatusLaudos = listaStatusLaudos;
-    }
-
-    
-    
-//##########################################Laudos    
     public StatusLaudo getStatusLaudo() {
         return statusLaudo;
     }
@@ -108,6 +99,7 @@ public class ListaClinicaBean implements Serializable {
     }
 
     public List<StatusLaudo> getStatusLaudos() {
+        System.out.println("Get Status Laudos");
         statusLaudos = statusLaudoDAO().getEntities();
         return statusLaudos;
     }
@@ -115,6 +107,26 @@ public class ListaClinicaBean implements Serializable {
     public void setStatusLaudos(List<StatusLaudo> statusLaudos) {
         this.statusLaudos = statusLaudos;
     }
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+
+    public List<Patient> getPatients() {
+        System.out.println("Get Patients");
+        patients = patientDAO().getEntities();
+        return patients;
+    }
+
+    public void setPatients(List<Patient> patients) {
+        this.patients = patients;
+    }
+
+
     
     
     

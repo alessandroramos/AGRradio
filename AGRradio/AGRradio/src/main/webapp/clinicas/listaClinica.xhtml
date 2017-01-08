@@ -9,36 +9,35 @@
                 template="../resources/main.xhtml">
 
     <ui:define name="tarefas">
-        <div id="conteudo" style="margin-bottom:16%"> 
+        <div id="conteudo" style="margin-bottom:23%"> 
             <h:form>
                 <p:growl id="msgs" showDetail="true" /> 
                 <p:panel header="Lista de Paciente Clinica" 
-                         style="margin-bottom:10px; width: 1000px; height:480px; position:absolute; left:50%; margin-left:-500px ">
+                         style="margin-bottom:10px; width: 1000px; height:630px; position:absolute; left:50%; margin-left:-500px ">
                     <h:panelGrid columns="1" cellpadding="5">
-                        <p:selectOneMenu id="country" value="#{listaClinicaBean.listaStatusLaudo}" style="width:970px">
+                        <p:selectOneMenu id="ListaStatu" value="#{listaClinicaBean.statusCodigo}" style="width:970px">
                             <p:ajax listener="#{listaClinicaBean.onListaStatusLaudoChange()}" />
-                            <f:selectItem itemLabel="Enviados sem pedido de Laudos" itemValue="" noSelectionOption="true" />
-                            <f:selectItems value="#{listaClinicaBean.listaStatusLaudos}" />
+                            <f:selectItems value="#{listaClinicaBean.statusLaudos}" var="statusLaudo"  itemValue="#{statusLaudo.codigo}" itemLabel="#{statusLaudo.descricao}"/>
                         </p:selectOneMenu>
                     </h:panelGrid>
-                    <p:dataTable var="car" value="#{dtPaginatorView.cars}" rows="10"
+                    <p:dataTable  id="tabelaExameClinica" var="exame" value="#{listaClinicaBean.patients}" rows="10"
                                          paginator="true"
                                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                          >
                         <p:column style="width:32px;text-align: center">
-                            <p:commandButton update=":form:carDetail" oncomplete="PF('carDialog').show()" icon="ui-icon-search" title="View">
-                                 <f:setPropertyActionListener value="#{car}" target="#{dtSelectionView.selectedCar}" />
+                            <p:commandButton oncomplete="PF('carDialog').show()" icon="ui-icon-search" title="View">
+                                 <f:setPropertyActionListener value="" target="" />
                              </p:commandButton>
                         </p:column>
-                        <p:column headerText="Codigo" width="160">
-                            <h:outputText value="#{car.id}" />
+                        <p:column headerText="Codigo" width="50">
+                            <h:outputText value="#{exame.pk}" />
                         </p:column>
 
-                        <p:column headerText="Nome do Paciente" width="600">
-                            <h:outputText value="#{car.year}" />
+                        <p:column headerText="Nome do Paciente" width="700">
+                            <h:outputText value="#{exame.patName}" />
                         </p:column>
                         <p:column headerText="Laudo" width="60">
-                            <h:outputText value="#{car.color}"  />
+                            <h:outputText value="#{exame.patId}"  />
                         </p:column>
                     </p:dataTable>                    
                 </p:panel>
