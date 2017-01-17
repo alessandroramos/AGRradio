@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
 package br.com.agrsystem.controller;
 
@@ -17,16 +22,16 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
-
-@ManagedBean(name = "listaClinicaBean")
+@ManagedBean(name = "listaMedicoBean")
 @RequestScoped
-public class ListaClinicaBean implements Serializable {
-
+public class ListaMedicoBean implements Serializable{
+    
 
     private static final long serialVersionUID = 1L;
     private String erro = null;
     private int statusCodigo;
     private Study selecionaLinha;
+    private String ediLaudo;
     private String pesNome;
     private String pesCodigo;
     
@@ -47,9 +52,8 @@ public class ListaClinicaBean implements Serializable {
     private Files files = new Files();
     private List<Files> filess;
     
-    
 //##############################################################################    
-    public ListaClinicaBean() {    }
+    public ListaMedicoBean() {    }
 //##############################################################################
     
 //##################################Interface###################################    
@@ -104,7 +108,6 @@ public class ListaClinicaBean implements Serializable {
         
         return retorno;
     }
-
 //##############################################################################
     public void displayLocation() {
         FacesMessage msg;        
@@ -286,6 +289,14 @@ public class ListaClinicaBean implements Serializable {
         this.selecionaLinha = selecionaLinha;
     }
 
+    public String getEdiLaudo() {
+        return ediLaudo;
+    }
+
+    public void setEdiLaudo(String ediLaudo) {
+        this.ediLaudo = ediLaudo;
+    }
+
     public String getPesNome() {
         return pesNome;
     }
@@ -301,6 +312,7 @@ public class ListaClinicaBean implements Serializable {
     public void setPesCodigo(String pesCodigo) {
         this.pesCodigo = pesCodigo;
     }
+
 
         
 }

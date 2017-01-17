@@ -9,48 +9,108 @@
                 template="../resources/main.xhtml">
 
     <ui:define name="tarefas">
-        <div id="conteudo" style="margin-bottom:16%; " >            
-            <p:dialog header="Lista de Paciente Medico"
-                      id="LCdialog"  
-                      modal="true"
-                      minWidth="1000"
-                      width="1000"
-                      height="480"
-                      closable="false"
-                      position="center"
-                      widgetVar="modalLogin"
-                      showEffect="slide" 
-                      draggable="false"
-                      resizable="false"
-                      visible="true">
-                <h:form prependId="false" id="formLM">
-                    <p:themeSwitcher id="basic" style="width:940px" >
-                        <f:selectItem itemLabel="Enviados sem pedido de Laudos" itemValue="" noSelectionOption="true"/>
-                        <f:selectItems value="[afterdark, afternoon, afterwork]"/>
-                    </p:themeSwitcher> 
-                    <p:outputLabel/>
-                    <p:dataTable var="car" value="#{dtPaginatorView.cars}" rows="10"
-                                         paginator="true"
-                                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                         >
-                        <p:column style="width:32px;text-align: center">
-                            <p:commandButton update=":form:carDetail" oncomplete="PF('carDialog').show()" icon="ui-icon-search" title="View">
-                                 <f:setPropertyActionListener value="#{car}" target="#{dtSelectionView.selectedCar}" />
-                             </p:commandButton>
+        <div id="conteudo" style="margin-bottom:23%"> 
+            <h:form id="formMedico">
+                <p:growl id="msgs" showDetail="true" /> 
+                <p:panel header="Lista de Paciente Medico" 
+                         style="margin-bottom:10px; width: 1000px; height:630px; position:absolute; left:50%; margin-left:-500px ">
+                    <h:panelGrid columns="1" cellpadding="5">
+                        <p:selectOneMenu id="ListaStatuM" value="#{listaMedicoBean.statusCodigo}" style="width:970px">
+                            <p:ajax listener="#{listaClinicaBean.onListaStatusLaudoChange()}" />
+                            <f:selectItems value="#{listaClinicaBean.statusLaudos}" var="statusLaudo"  itemValue="#{statusLaudo.codigo}" itemLabel="#{statusLaudo.descricao}"/>
+                        </p:selectOneMenu>
+                    </h:panelGrid>
+                    <h:panelGrid columns="6" cellpadding="5" style="margin-bottom:10px; margin-top: 10px">
+                        <h:outputLabel value="Pesquisa Nome: "/>
+                        <p:inputText id="keyword" value="#{listaMedicoBean.pesNome}" label="Keyword" style="width: 300px"/>
+                        <p:watermark for="keyword" value="Pesquisa pelo Nome do Paciente" id="watermark" />
+                        <h:outputLabel value="Codigo Stud: " style="margin-left: 114px"/>
+                        <p:inputText id="keyword1" value="#{listaMedicoBean.pesNome}" label="Keyword" style="width: 300px"/>
+                        <p:watermark for="keyword1" value="Pesquisa pelo Codigo do Paciente" id="watermark1" />
+                    </h:panelGrid>                    
+                    <p:dataTable var="exa" value="#{listaMedicoBean.seriess}" id="listMed" rows="5"
+                                 paginator="true"
+                                 paginatorPosition="top"
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+                        <p:column headerText="Codigo" width="40">
+                            <h:outputText value="#{exa.study.patient.pk}" />
                         </p:column>
-                        <p:column headerText="Codigo" width="160">
-                            <h:outputText value="#{car.id}" />
+                        <p:column headerText="Cod Paciente" width="80" style="text-align: center">
+                            <h:outputText value="#{exa.study.patient.patId}" />
                         </p:column>
 
-                        <p:column headerText="Nome do Paciente" width="600">
-                            <h:outputText value="#{car.year}" />
+                        <p:column headerText="Nome do Paciente" width="300">
+                            <h:outputText value="#{exa.study.patient.patName}" />
                         </p:column>
-                        <p:column headerText="Laudo" width="60">
-                            <h:outputText value="#{car.color}"  />
+                        <p:column headerText="Data Nacimento" width="100" style="text-align: center">
+                            <h:outputText value="#{listaMedicoBean.getDataInicioFormatada(exa.study.patient.patBirthdate)}" />
+                        </p:column> 
+
+                        <p:column headerText="Sexo" width="50">
+                            <h:outputText value="#{listaMedicoBean.getSexo(exa.study.patient.patSex)}" />
                         </p:column>
+
+                        <p:column headerText="Data Ult Exame" width="85" style="text-align: center">
+                            <h:outputText value="#{listaMedicoBean.getDataExameFormatada(exa.ppsStart)}" />
+                        </p:column>
+
+                        <p:column headerText="Quat Exame" width="70" style="text-align: center">
+                            <h:outputText value="#{listaMedicoBean.quantidadeExame(exa.study.pk)}" />
+                        </p:column>
+                        <p:column headerText="Exame" style="width:30px; " >
+                            <p:rowToggler  />
+                        </p:column>
+
+
+                        <p:rowExpansion>
+                            <p:dataTable id="listExameMedico" var="exameMed" value="#{listaMedicoBean.seriessM}" rows="3" 
+                                         paginator="true"   
+                                         paginatorPosition="bottom"
+                                         paginatorTemplate=" {FirstPageLink} {PageLinks} {NextPageLink}  "
+                                         >
+                                <p:column headerText="Codigo" width="40">
+                                    <h:outputText value="#{exameMed.pk}" />
+                                </p:column>
+                                <p:column headerText="Descrição" width="150">
+                                    <h:outputText value="#{exameMed.study.studyDesc}" />
+                                </p:column>
+
+                                <p:column headerText="Instituição" width="210">
+                                    <h:outputText value="#{exameMed.institution}" />
+                                </p:column>
+                                <p:column headerText="Imagens" width="70" style="text-align: center">
+                                    <h:outputText value="#{listaMedicoBean.quantidadeImagens(exa.study.pk)}"  />
+                                    <p:commandButton ondblclick="exameDialog.show()"  actionListener="#{listaMedicoBean.listaExame(exame.instance.series.study.patient.patName)}" 
+                                                     icon="ui-icon-search" style="margin-left: 30px">
+                                        <f:setPropertyActionListener value="#{exame.pk}" target="#{listaMedicoBean.statusCodigo}" />
+                                    </p:commandButton>
+                                </p:column>                                
+                                <p:column style="width:32px;text-align: center" headerText="Laudo" >
+                                    <p:commandButton onclick="exameDialog.show()"   
+                                                     icon="ui-icon-document">
+                                        <f:setPropertyActionListener value="#{exame.pk}" target="#{listaMedicoBean.statusCodigo}" />
+                                    </p:commandButton>
+                                </p:column>
+                            </p:dataTable>
+                        </p:rowExpansion>
                     </p:dataTable>
-                </h:form>
-            </p:dialog>
+                </p:panel>
+                <p:dialog header="Laudo"
+                          id="LCdialog" 
+                          widgetVar="exameDialog"
+                          modal="true"
+                          width="800"
+                          height="380"
+                          closable="true"
+                          position="center"                      
+                          showEffect="slide" 
+                          draggable="false"
+                          resizable="false"> 
+                    <h:form>
+                        <p:editor value="#{listaMedicoBean.ediLaudo}" height="350" width="770" style="margin-bottom:10px" disabled="true"    />
+                    </h:form>
+                </p:dialog>            
+            </h:form>         
         </div>        
     </ui:define>
 </ui:composition>

@@ -10,7 +10,7 @@
 
     <ui:define name="tarefas">
         <div id="conteudo" style="margin-bottom:23%"> 
-            <h:form>
+            <h:form id="formClinica">
                 <p:growl id="msgs" showDetail="true" /> 
                 <p:panel header="Lista de Paciente Clinica" 
                          style="margin-bottom:10px; width: 1000px; height:630px; position:absolute; left:50%; margin-left:-500px ">
@@ -20,25 +20,76 @@
                             <f:selectItems value="#{listaClinicaBean.statusLaudos}" var="statusLaudo"  itemValue="#{statusLaudo.codigo}" itemLabel="#{statusLaudo.descricao}"/>
                         </p:selectOneMenu>
                     </h:panelGrid>
-                    <p:dataTable  id="tabelaExameClinica" var="exame" value="#{listaClinicaBean.patients}" rows="10"
-                                         paginator="true"
-                                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                         >
-                        <p:column style="width:32px;text-align: center">
-                            <p:commandButton oncomplete="PF('carDialog').show()" icon="ui-icon-search" title="View">
-                                 <f:setPropertyActionListener value="" target="" />
-                             </p:commandButton>
+                    <h:panelGrid columns="6" cellpadding="5" style="margin-bottom:10px; margin-top: 10px">
+                        <h:outputLabel value="Pesquisa Nome: "/>
+                        <p:inputText id="keyword" value="#{listaClinicaBean.pesNome}" required="true" label="Keyword" style="width: 300px"/>
+                        <p:watermark for="keyword" value="Pesquisa pelo Nome do Paciente" id="watermark" />
+                        <h:outputLabel value="Codigo Stud: " style="margin-left: 113px"/>
+                        <p:inputText id="keyword1" value="#{listaClinicaBean.pesCodigo}" required="true" label="Keyword" style="width: 300px"/>
+                        <p:watermark for="keyword1" value="Pesquisa pelo Codigo do Paciente" id="watermark1" />
+                    </h:panelGrid>                    
+                    <p:dataTable var="exa" value="#{listaClinicaBean.seriess}" id="listMed" rows="5"
+                                 paginator="true"
+                                 paginatorPosition="top"
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+                        <p:column headerText="Codigo" width="40">
+                            <h:outputText value="#{exa.study.patient.pk}" />
                         </p:column>
-                        <p:column headerText="Codigo" width="50">
-                            <h:outputText value="#{exame.pk}" />
+                        <p:column headerText="Codigo Paciente" width="100" style="text-align: center">
+                            <h:outputText value="#{exa.study.patient.patId}" />
                         </p:column>
 
-                        <p:column headerText="Nome do Paciente" width="700">
-                            <h:outputText value="#{exame.patName}" />
+                        <p:column headerText="Nome do Paciente" width="250">
+                            <h:outputText value="#{exa.study.patient.patName}" />
                         </p:column>
-                        <p:column headerText="Laudo" width="60">
-                            <h:outputText value="#{exame.patId}"  />
+                        <p:column headerText="Data de Nacimento" width="110" style="text-align: center">
+                            <h:outputText value="#{listaClinicaBean.getDataInicioFormatada(exa.study.patient.patBirthdate)}" />
+                        </p:column> 
+
+                        <p:column headerText="Sexo" width="50">
+                            <h:outputText value="#{listaClinicaBean.getSexo(exa.study.patient.patSex)}" />
                         </p:column>
+
+                        <p:column headerText="Data Ultimo Exame" width="110" style="text-align: center">
+                            <h:outputText value="#{listaClinicaBean.getDataExameFormatada(exa.ppsStart)}" />
+                        </p:column>
+
+                        <p:column headerText="Quatidade Exame" width="100" style="text-align: center">
+                            <h:outputText value="#{listaClinicaBean.quantidadeExame(exa.study.pk)}" />
+                        </p:column>
+                        <p:column headerText="Exames" style="width:36px" >
+                            <p:rowToggler  />
+                        </p:column>
+                        <p:rowExpansion>
+                            <p:dataTable id="listExameMedico" var="exameMed" value="#{listaClinicaBean.seriessM}" rows="3" 
+                                         paginator="true"   
+                                         paginatorPosition="bottom"
+                                         paginatorTemplate=" {FirstPageLink} {PageLinks} {NextPageLink}  "
+                                         >
+                                <p:column headerText="Codigo" width="40">
+                                    <h:outputText value="#{exameMed.pk}" />
+                                </p:column>
+                                <p:column headerText="Descrição" width="250">
+                                    <h:outputText value="#{exameMed.study.studyDesc}" />
+                                </p:column>
+
+                                <p:column headerText="Instituição" width="310">
+                                    <h:outputText value="#{exameMed.institution}" />
+                                </p:column>
+                                <p:column headerText="Data Ultimo Exame" width="110" style="text-align: center">
+                                    <h:outputText value="#{listaClinicaBean.getDataExameFormatada(exa.ppsStart)}" />
+                                </p:column>
+                                <p:column headerText="Imagens" width="50" style="text-align: center">
+                                    <h:outputText value="#{listaClinicaBean.quantidadeImagens(exa.study.pk)}"  />
+                                </p:column>                                
+                                <p:column style="width:32px;text-align: center" headerText="Laudo" >
+                                    <p:commandButton ondblclick="exameDialog.show()"  actionListener="dddd" 
+                                                     icon="ui-icon-contact">
+                                        <f:setPropertyActionListener value="#{exame.pk}" target="#{listaClinicaBean.statusCodigo}" />
+                                    </p:commandButton>
+                                </p:column>
+                            </p:dataTable>
+                        </p:rowExpansion>
                     </p:dataTable>                    
                 </p:panel>
             </h:form>         
